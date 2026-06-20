@@ -1,0 +1,90 @@
+[
+  {
+    "query_id": "Q001",
+    "query": "tergugat wanprestasi tidak membayar hutang sesuai perjanjian kredit",
+    "ground_truth": [
+      "case_001",
+      "case_003",
+      "case_005"
+    ],
+    "expected_label": 1,
+    "keterangan": "Wanprestasi pembayaran hutang/kredit"
+  },
+  {
+    "query_id": "Q002",
+    "query": "gugatan penggugat ditolak eksepsi dikabulkan tidak dapat diterima",
+    "ground_truth": [
+      "case_002",
+      "case_004",
+      "case_007"
+    ],
+    "expected_label": 0,
+    "keterangan": "Gugatan ditolak / NO"
+  },
+  {
+    "query_id": "Q003",
+    "query": "perjanjian jual beli tanah bangunan tergugat ingkar janji tidak menyerahkan objek",
+    "ground_truth": [
+      "case_001",
+      "case_003",
+      "case_005"
+    ],
+    "expected_label": 1,
+    "keterangan": "Wanprestasi jual beli properti"
+  },
+  {
+    "query_id": "Q004",
+    "query": "penggugat meminjamkan uang tergugat tidak mengembalikan pinjaman jatuh tempo",
+    "ground_truth": [
+      "case_005",
+      "case_006",
+      "case_009"
+    ],
+    "expected_label": 1,
+    "keterangan": "Wanprestasi pinjaman uang"
+  },
+  {
+    "query_id": "Q005",
+    "query": "kontrak kerja konstruksi bangunan tergugat tidak menyelesaikan pekerjaan",
+    "ground_truth": [
+      "case_001",
+      "case_003",
+      "case_012"
+    ],
+    "expected_label": 1,
+    "keterangan": "Wanprestasi kontrak konstruksi"
+  },
+  {
+    "query_id": "Q006",
+    "query": "gugatan tidak dapat diterima kompetensi absolut pengadilan tidak berwenang",
+    "ground_truth": [
+      "case_004",
+      "case_010",
+      "case_011"
+    ],
+    "expected_label": 0,
+    "keterangan": "Ditolak karena kompetensi"
+  },
+  {
+    "query_id": "Q007",
+    "query": "tergugat cidera janji tidak membayar sewa menyewa ruangan kantor gedung",
+    "ground_truth": [
+      "case_001",
+      "case_005",
+      "case_012"
+    ],
+    "expected_label": 1,
+    "keterangan": "Wanprestasi sewa menyewa"
+  },
+  {
+    "query_id": "Q008",
+    "query": "pasal 1243 1320 1338 kuhperdata wanprestasi ganti rugi materiil immateriil",
+    "ground_truth": [
+      "case_001",
+      "case_003",
+      "case_009"
+    ],
+    "expected_label": 1,
+    "keterangan": "Query berbasis pasal KUHPerdata"
+  }
+]

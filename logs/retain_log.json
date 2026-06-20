@@ -1,0 +1,374 @@
+[
+  {
+    "timestamp": "2026-06-20T12:37:34.635677",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_055",
+      "case_056",
+      "case_057",
+      "case_058"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_base_sebelum": 54,
+    "case_base_sesudah": 58
+  },
+  {
+    "timestamp": "2026-06-20T12:37:50.494688",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_055",
+      "case_056",
+      "case_057",
+      "case_058"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_base_sebelum": 54,
+    "case_base_sesudah": 58
+  },
+  {
+    "timestamp": "2026-06-20T13:02:54.667847",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_059",
+      "case_060",
+      "case_061",
+      "case_062"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 58,
+    "case_base_sesudah": 62
+  },
+  {
+    "timestamp": "2026-06-20T13:04:40.187331",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_063",
+      "case_064",
+      "case_065",
+      "case_066"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 62,
+    "case_base_sesudah": 66
+  },
+  {
+    "timestamp": "2026-06-20T13:04:55.315423",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_067",
+      "case_068",
+      "case_069",
+      "case_070"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 66,
+    "case_base_sesudah": 70
+  },
+  {
+    "timestamp": "2026-06-21T01:23:26.435784",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_055",
+      "case_056",
+      "case_057",
+      "case_058"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 54,
+    "case_base_sesudah": 58
+  },
+  {
+    "timestamp": "2026-06-21T01:46:27.333056",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_059",
+      "case_060",
+      "case_061",
+      "case_062"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 58,
+    "case_base_sesudah": 62
+  },
+  {
+    "timestamp": "2026-06-21T01:46:43.555869",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_063",
+      "case_064",
+      "case_065",
+      "case_066"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 62,
+    "case_base_sesudah": 66
+  },
+  {
+    "timestamp": "2026-06-21T01:48:54.932144",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_055",
+      "case_056",
+      "case_057",
+      "case_058"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 54,
+    "case_base_sesudah": 58
+  },
+  {
+    "timestamp": "2026-06-21T02:25:28.281004",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_059",
+      "case_060",
+      "case_061",
+      "case_062"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 58,
+    "case_base_sesudah": 62
+  },
+  {
+    "timestamp": "2026-06-21T02:25:40.397694",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_063",
+      "case_064",
+      "case_065",
+      "case_066"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 62,
+    "case_base_sesudah": 66
+  },
+  {
+    "timestamp": "2026-06-21T02:26:43.680337",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_067",
+      "case_068",
+      "case_069",
+      "case_070"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 66,
+    "case_base_sesudah": 70
+  },
+  {
+    "timestamp": "2026-06-21T02:26:57.930891",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_071",
+      "case_072",
+      "case_073",
+      "case_074"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 70,
+    "case_base_sesudah": 74
+  },
+  {
+    "timestamp": "2026-06-21T03:27:20.986456",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_075",
+      "case_076",
+      "case_077",
+      "case_078"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 74,
+    "case_base_sesudah": 78
+  },
+  {
+    "timestamp": "2026-06-21T03:30:45.928589",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_055",
+      "case_056",
+      "case_057",
+      "case_058"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 54,
+    "case_base_sesudah": 58
+  },
+  {
+    "timestamp": "2026-06-21T05:37:27.006509",
+    "jumlah_ditambah": 4,
+    "case_id_baru": [
+      "case_055",
+      "case_056",
+      "case_057",
+      "case_058"
+    ],
+    "sumber_query_id": [
+      "D001",
+      "D002",
+      "D003",
+      "D005"
+    ],
+    "case_id_sumber_pasal": {
+      "D001": "case_002",
+      "D002": "case_039",
+      "D003": "case_014",
+      "D005": "case_021"
+    },
+    "case_base_sebelum": 54,
+    "case_base_sesudah": 58
+  }
+]
