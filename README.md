@@ -179,5 +179,5 @@ Chrome; notebook 06 bersifat opsional dan dijalankan sesuai kebutuhan retain.)
 ## Tim & Mata Kuliah
 
 - **Nama Anggota:** Marcela Setiawan (202310370311393) dan Faradita Bilbiana Eka Saputeri (202310370311074)
-- **Mata Kuliah:** Penalaran Komputer — SubCPMK-3, Semester Genap 2025/2026
+- **Mata Kuliah:** Penalaran Komputer A — SubCPMK-3, Semester Genap 2025/2026
 - **Domain Hukum:** Perdata Gugatan Wanprestasi — PN Surabaya
