@@ -1,4 +1,4 @@
-# CBR Prediksi Putusan Wanprestasi — Pengadilan Negeri Surabaya
+# CBR Prediksi Putusan Wanprestasi - Pengadilan Negeri Surabaya
 
 Sistem **Case-Based Reasoning (CBR)** sederhana berbasis Python untuk memprediksi kemungkinan amar
 putusan (Dikabulkan / Ditolak-NO) pada perkara perdata gugatan **wanprestasi** di **Pengadilan Negeri
@@ -38,14 +38,18 @@ Evaluasi Model).
 │   ├── 03_case_retrieval.ipynb            Tahap 3 — TF-IDF, SVM, retrieve()
 │   ├── 04_case_solution_reuse.ipynb       Tahap 4 — predict_outcome()
 │   ├── 05_model_evaluation.ipynb          Tahap 5 — Accuracy/Precision/Recall/F1
-│   └── 06_retain_optional.ipynb           Tahap 6 (opsional) — revisi & retain
+│   └── Revisi & Retain.ipynb              Tahap 6 (opsional) — revisi & retain
 ├── data/
 │   ├── raw/
 │   │   ├── pdf/                       <- PDF asli hasil download dari MA RI
 │   │   └── case_001.txt ... case_NNN.txt  <- teks bersih hasil cleaning (Tahap 1)
 │   ├── processed/
+|   |   ├── tokens/
+|   |   |   └── case_001_tokens.json...case_054_tokens.json
 │   │   ├── cases.csv                  <- case base terstruktur (Tahap 2)
-│   │   └── cases.json
+|   |   ├── case_base_structured.json
+|   |   ├── cases.json
+|   |   └── metadata_raw.csv
 │   ├── eval/
 │   │   ├── queries.json               <- query uji + ground-truth (Tahap 3)
 │   │   ├── retrieval_metrics.csv      <- hasil evaluasi retrieval (Tahap 5)
@@ -114,7 +118,7 @@ folder `data/`.
 | 3 | `03_case_retrieval.ipynb` | `data/processed/cases.csv` | `data/eval/queries.json` | TF-IDF + cosine similarity, training SVM, fungsi `retrieve()` |
 | 4 | `04_case_solution_reuse.ipynb` | `data/processed/cases.csv` | `data/results/predictions.csv` | Fungsi `predict_outcome()`, demo 5 kasus baru |
 | 5 | `05_model_evaluation.ipynb` | `cases.csv`, `queries.json`, `predictions.csv` | `data/eval/retrieval_metrics.csv`, `prediction_metrics.csv` | Accuracy, Precision, Recall, F1 + bar chart + error analysis |
-| 6 | `06_retain_optional.ipynb` *(opsional)* | `cases.csv`, `predictions.csv` | `cases.csv` (diperbarui), `logs/retain_log.json` | Menambah kasus baru yang prediksinya terbukti tepat ke case base |
+| 6 | `Revisi & Retain.ipynb` *(opsional)* | `cases.csv`, `predictions.csv` | `cases.csv` (diperbarui), `logs/retain_log.json` | Menambah kasus baru yang prediksinya terbukti tepat ke case base |
 
 Setelah Tahap 6 dijalankan, **Tahap 3–5 boleh dijalankan ulang** agar kasus hasil retain ikut masuk ke
 model TF-IDF/SVM dan ke evaluasi — ini mencerminkan sifat CBR yang iteratif (*Retrieve → Reuse → Revise
