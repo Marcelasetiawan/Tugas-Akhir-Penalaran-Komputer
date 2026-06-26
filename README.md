@@ -58,7 +58,7 @@ Evaluasi Model).
 ```
 
 > **Catatan:** folder `data/raw/pdf/` berisi file besar (puluhan PDF). Jika ukuran repository menjadi
-> masalah saat upload ke GitHub, folder ini boleh diabaikan (`.gitignore`) — hasil scraping yang penting
+> masalah saat upload ke GitHub, folder ini boleh diabaikan (`.gitignore`) - hasil scraping yang penting
 > untuk dinilai adalah `data/raw/*.txt` dan `data/processed/cases.csv`, yang jauh lebih kecil.
 
 ## Instalasi
@@ -66,7 +66,7 @@ Evaluasi Model).
 ### 1. Clone repository
 
 ```bash
-git clone <URL_REPOSITORY_ANDA>
+git clone https://github.com/Marcelasetiawan/Tugas-Akhir-Penalaran-Komputer.git
 cd <NAMA_REPOSITORY>
 ```
 
