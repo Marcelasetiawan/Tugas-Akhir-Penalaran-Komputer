@@ -67,7 +67,7 @@ Evaluasi Model).
 
 ```bash
 git clone https://github.com/Marcelasetiawan/Tugas-Akhir-Penalaran-Komputer.git
-cd <NAMA_REPOSITORY>
+cd Tugas-Akhir-Penalaran-Komputer
 ```
 
 ### 2. Buat virtual environment (disarankan)
