@@ -160,6 +160,172 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/05_model_evaluatio
 (Notebook 01 disarankan tetap dijalankan interaktif karena membutuhkan verifikasi Cloudflare manual di
 Chrome; notebook 06 bersifat opsional dan dijalankan sesuai kebutuhan retain.)
 
+
+## Penjelasan Pertahap
+
+### Tahap 1 — Membangun Case Base
+**File:** `notebooks/tahap_01_case_base_scraping_wanprestasi_pn_surabaya.ipynb`
+
+**Yang dilakukan:**
+- Scraping link putusan dari Direktori MA RI (domain Wanprestasi, PN Surabaya)
+- Download 80 PDF putusan
+- Konversi PDF → TXT menggunakan `pdfminer`
+- Preprocessing: hapus header/footer/watermark, normalisasi lowercase, tokenisasi
+- Filter otomatis: buang 22 dokumen yang bukan Putusan (Penetapan/Akta/Pencabutan)
+- Rename `case_id` agar berurutan (`case_001` – `case_058`)
+
+**Output:**
+- `data/raw/pdf/` — 80 file PDF
+- `data/raw/case_001.txt` – `case_058.txt` — teks bersih
+- `data/processed/metadata_raw.csv`
+- `logs/cleaning.log`, `logs/links_putusan.json`
+
+>  **Catatan:** Tahap ini memerlukan **interaksi manual** karena situs MA RI menggunakan
+> proteksi Cloudflare. Jalankan Chrome dalam mode remote-debugging terlebih dahulu:
+> ```bash
+> # Windows
+> "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\chrome_debug"
+> ```
+> Buka `https://putusan3.mahkamahagung.go.id`, selesaikan verifikasi Cloudflare secara manual,
+> baru jalankan cell-cell notebook. **Data hasil scraping (`data/raw/*.txt`) sudah tersedia
+> di repository ini**, sehingga Tahap 2–5 dapat langsung dijalankan tanpa mengulang Tahap 1.
+
+---
+
+### Tahap 2 — Case Representation
+**File:** `notebooks/tahap_02_case_representation.ipynb`
+
+**Yang dilakukan:**
+- Load semua file `.txt` dari `data/raw/`
+- Ekstraksi metadata: nomor perkara, tanggal, jenis perkara, pasal, nama pihak (penggugat & tergugat)
+- Ekstraksi konten kunci: ringkasan fakta (duduk perkara), argumen hukum (amar putusan lengkap)
+- Feature engineering: `word_count`, `bag-of-words`, label putusan (`0`=Ditolak/NO, `1`=Dikabulkan)
+- Filter tambahan: buang dokumen yang teridentifikasi bukan Putusan substantif (total 58 → 54 kasus)
+- Simpan ke format terstruktur
+
+**Output:**
+- `data/processed/cases.csv` — case base final (kolom: `case_id`, `no_perkara`, `tanggal`, `jenis_perkara`, `pihak`, `pasal`, `ringkasan_fakta`, `argumen_hukum`, `amar_lengkap`, `label_putusan`, `word_count`, `text_full`)
+- `data/processed/cases.json`
+
+---
+
+### Tahap 3 — Case Retrieval
+**File:** `notebooks/tahap_03_case_retrieval.ipynb`
+
+**Yang dilakukan:**
+- Load `cases.csv` hasil Tahap 2
+- Vektorisasi seluruh corpus menggunakan `TfidfVectorizer` (unigram+bigram, max 5.000 fitur, `sublinear_tf=True`)
+- Split data: **80:20 stratified** berdasarkan `label_putusan`
+- Training model SVM (kernel linear, C=1.0) pada representasi TF-IDF
+- Implementasi fungsi `retrieve(query, k=5)`:
+  1. Pre-process query (lowercase, hapus stopword)
+  2. Hitung vektor query (TF-IDF)
+  3. Hitung cosine-similarity dengan seluruh case vector
+  4. Kembalikan top-k `case_id`
+- Evaluasi retrieval: Precision@k, Recall@k, F1@k untuk k=1,3,5,10
+- Siapkan 8 query uji + ground-truth
+
+**Output:**
+- `data/eval/queries.json` — 8 query uji beserta ground-truth case_id
+- `data/eval/retrieval_metrics.csv`
+
+---
+
+### Tahap 4 — Case Solution Reuse
+**File:** `notebooks/tahap_04_case_solution_reuse.ipynb`
+
+**Yang dilakukan:**
+- Bangun ulang TF-IDF + fungsi `retrieve()` (identik Tahap 3, agar dapat dijalankan mandiri)
+- Ekstrak solusi dari setiap kasus: `{case_id: amar_putusan_ringkas}`
+- Implementasi dua algoritma prediksi:
+  - **Majority Vote**: pilih label yang paling banyak muncul di top-5
+  - **Weighted Similarity**: bobot = skor cosine-similarity; label dengan total bobot terbesar menang
+- Implementasi fungsi `predict_outcome(query, k=5, metode='weighted')`
+- Demo manual 5 contoh kasus baru → bandingkan prediksi vs putusan sebenarnya
+- Perbandingan Majority Vote vs Weighted Similarity pada 5 kasus demo
+
+**Output:**
+- `data/results/predictions.csv` — kolom: `query_id`, `predicted_solution`, `predicted_label`, `top_5_case_ids`, `similarity_scores`
+
+---
+
+### Tahap 5 — Model Evaluation
+**File:** `notebooks/tahap_05_model_evaluation.ipynb`
+
+**Yang dilakukan:**
+- Evaluasi retrieval: Accuracy, Precision, Recall, F1 pada k=1,3,5,10 menggunakan `sklearn.metrics`
+- Evaluasi klasifikasi SVM pada data test (20%)
+- Evaluasi prediksi CBR (Weighted Similarity) pada 5 kasus demo
+- **Tabel perbandingan 3 model**: TF-IDF Retrieval (cosine sim) vs SVM vs CBR (Weighted Sim)
+- Bar chart visualisasi perbandingan performa
+- Error analysis: analisis kasus kegagalan retrieval (MISS) & prediksi salah
+- Rekomendasi perbaikan berbasis pola kegagalan
+
+**Output:**
+- `data/eval/retrieval_metrics.csv` — metrik retrieval per k
+- `data/eval/prediction_metrics.csv` — metrik klasifikasi per model
+- Bar chart visualisasi (ditampilkan inline di notebook)
+
+---
+
+### Tahap 6 — Revisi & Retain *(Opsional)*
+**File:** `notebooks/Revisi___Retain.ipynb`
+
+**Yang dilakukan:**
+- Load `predictions.csv` hasil Tahap 4
+- Filter otomatis: tandai kasus yang prediksinya **tepat** (`predicted_label == label_sebenarnya`)
+- Override manual: opsi untuk menambah/mengecualikan kasus tertentu dari daftar retain
+- Ambil metadata kasus sumber dari `top_5_case_ids`
+- Bangun baris kasus baru dengan `case_id` melanjutkan urutan terakhir di case base
+- Gabungkan ke `cases.csv` dan `cases.json` untuk dipakai pada iterasi CBR berikutnya
+- Verifikasi akhir ukuran case base setelah retain
+
+**Output:**
+- `data/processed/cases.csv` — diperbarui (case base bertambah)
+- `data/processed/cases.json` — diperbarui
+
+---
+
+## Contoh Penggunaan Fungsi Retrieve & Predict
+
+```python
+# Setelah menjalankan Tahap 3 (kernel aktif), panggil langsung:
+
+hasil = retrieve("tergugat tidak menyelesaikan renovasi rumah sesuai perjanjian kerja", k=5)
+print(hasil)
+# Output: ['case_012', 'case_027', 'case_003', 'case_041', 'case_019']
+
+# Setelah menjalankan Tahap 4:
+prediksi = predict_outcome("kontraktor meninggalkan pekerjaan sebelum selesai", k=5, metode='weighted')
+print(prediksi)
+# Output: 'Dikabulkan'
+```
+
+---
+
+## Dependensi
+
+Lihat `requirements.txt`. Install dengan:
+
+```bash
+pip install -r requirements.txt
+```
+
+| Library | Kegunaan |
+|---|---|
+| `selenium` | Scraping halaman MA RI (Tahap 1) |
+| `beautifulsoup4` | Parsing HTML indeks putusan |
+| `pdfminer.six` | Ekstraksi teks dari PDF |
+| `pandas` | Manipulasi data tabular |
+| `scikit-learn` | TF-IDF, SVM, metrik evaluasi |
+| `tqdm` | Progress bar |
+| `matplotlib` | Visualisasi bar chart evaluasi |
+| `nltk` | Tokenisasi (fallback) |
+| `lxml` | Parser HTML alternatif |
+| `requests` | HTTP request tambahan |
+
+---
+
 ## Ringkasan Metode
 
 - **Domain perkara:** Perdata Gugatan Wanprestasi, PN Surabaya
