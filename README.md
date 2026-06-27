@@ -1,4 +1,18 @@
-# CBR Prediksi Putusan Wanprestasi - Pengadilan Negeri Surabaya
+# Implementasi Case-Based Reasoning dengan TF-IDF dan Support Vector Machine untuk Retrieval dan Prediksi Putusan Perdata Wanprestasi di Pengadilan Negeri Surabaya"
+
+## Penjelasan Judul
+
+| Frasa | Penjelasan |
+|---|---|
+| **Sistem Case-Based Reasoning** | Sistem yang memecahkan masalah baru berdasarkan pengalaman kasus lama, mengikuti siklus Retrieve → Reuse → Revise → Retain secara lengkap |
+| **Berbasis TF-IDF** | Representasi vektor dokumen menggunakan Term Frequency-Inverse Document Frequency (unigram+bigram, max 5.000 fitur) untuk mengukur kemiripan antar teks putusan |
+| **dan SVM** | Support Vector Machine dengan kernel linear digunakan sebagai model klasifikasi untuk memprediksi label putusan (Dikabulkan / Ditolak / Tidak Dapat Diterima) |
+| **untuk Analisis Putusan Perdata Wanprestasi** | Domain hukum yang dianalisis: gugatan ingkar janji (wanprestasi) dalam ranah hukum perdata |
+| **di Pengadilan Negeri Surabaya** | Sumber data: 54 dokumen putusan yang diambil dari Direktori Putusan Mahkamah Agung RI, khusus dari PN Surabaya |
+
+---
+
+## Deskripsi
 
 Sistem **Case-Based Reasoning (CBR)** sederhana berbasis Python untuk memprediksi kemungkinan amar
 putusan (Dikabulkan / Ditolak-NO) pada perkara perdata gugatan **wanprestasi** di **Pengadilan Negeri
@@ -7,6 +21,31 @@ Surabaya**, menggunakan data putusan yang dipublikasikan di [Direktori Putusan M
 Disusun untuk memenuhi tugas **SubCPMK-3 — Mata Kuliah Penalaran Komputer** (siklus CBR: Membangun Case
 Base → Case Representation → Case Retrieval → Case/Solution Reuse → Revisi & Retain (opsional) →
 Evaluasi Model).
+
+---
+
+## Anggota Tim
+
+| Nama | NIM |
+|---|---|
+| Marcela Setiawan | 202310370311393 |
+| Faradita Bilbiana Eka Saputeri | 202310370311074 |
+
+---
+
+## Statistik Dataset
+
+| Keterangan | Jumlah |
+|---|---|
+| PDF diunduh | 80 dokumen |
+| Dokumen valid (Putusan) | 54 dokumen |
+| Dokumen dibuang di Tahap 1 (Penetapan/Akta/Pencabutan) | 22 dokumen |
+| Dokumen dibuang di Tahap 2 (bukan Putusan substantif) | 4 dokumen |
+| Case base final | 54 kasus |
+| Split train | ±43 kasus (80%) |
+| Split test | ±11 kasus (20%) |
+
+---
 
 ## Siklus CBR yang Diimplementasikan
 
@@ -25,6 +64,8 @@ Evaluasi Model).
                                                               │ -> masuk case base     │
                                                               └────────────────────────┘
 ```
+
+---
 
 ## Struktur Repository
 
@@ -65,7 +106,15 @@ Evaluasi Model).
 > masalah saat upload ke GitHub, folder ini boleh diabaikan (`.gitignore`) - hasil scraping yang penting
 > untuk dinilai adalah `data/raw/*.txt` dan `data/processed/cases.csv`, yang jauh lebih kecil.
 
+
+---
+
 ## Instalasi
+
+### Prasyarat
+- Python **3.10+**
+- Google Chrome (untuk scraping Tahap 1)
+- ChromeDriver yang sesuai versi Chrome
 
 ### 1. Clone repository
 
